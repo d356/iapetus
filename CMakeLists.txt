@@ -4,23 +4,9 @@ include(CMakeForceCompiler)
 
 SET(CMAKE_SYSTEM_NAME SegaSaturn)
 
-if (WIN32)
-	set(SH_ELF_PATHS 
-		"[HKEY_LOCAL_MACHINE\\SOFTWARE\\KPIT\\GNUSH v12.02-ELF;Path]/sh-elf/bin"
-		"[HKEY_LOCAL_MACHINE\\SOFTWARE\\KPIT Cummins\\GNUSH v10.02-ELF;Path]/sh-elf/bin")
-else (WIN32)	        
-	set(SH_ELF_PATHS "")
-endif (WIN32)
-
-find_program(SH_ELF_GCC
-	NAMES sh-elf-gcc
-	PATHS
-		${SH_ELF_PATHS})
-
-find_program(SH_ELF_GPP
-	NAMES sh-elf-g++
-	PATHS
-		${SH_ELF_PATHS})
+CMAKE_FORCE_C_COMPILER("/carl9170fw/toolchain/inst/bin/sh-elf-gcc" GNU)
+SET(CMAKE_FIND_ROOT_PATH "/carl9170fw/toolchain/inst/bin")
+SET(CMAKE_ASM_COMPILER "/carl9170fw/toolchain/inst/bin/sh-elf-as")
 		
 PROJECT(iapetus C)
 
