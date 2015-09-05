@@ -22,11 +22,6 @@ find_program(SH_ELF_GPP
 	PATHS
 		${SH_ELF_PATHS})
 		
-# Specify the cross compiler.
-CMAKE_FORCE_C_COMPILER(${SH_ELF_GCC} GNU)
-CMAKE_FORCE_CXX_COMPILER(${SH_ELF_GPP} GNU)
-SET(CMAKE_FIND_ROOT_PATH /usr/local/share/sh-elf/bin)
-
 PROJECT(iapetus C)
 
 #CONFIGURE_FILE(config.h.cmake config.h)
